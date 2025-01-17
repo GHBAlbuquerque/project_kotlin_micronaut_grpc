@@ -1,6 +1,6 @@
 applicationType: grpc
 defaultPackage: br.com.study
 testFramework: junit
-sourceLanguage: java
-buildTool: gradle
-features: [app-name, data, data-jpa, discovery-core, gradle, grpc, h2, http-client-test, java, java-application, jdbc-hikari, junit, logback, micronaut-build, properties, readme, serialization-jackson, shade]
+sourceLanguage: kotlin
+buildTool: gradle_kotlin
+features: [app-name, data, data-jpa, discovery-core, gradle, grpc, h2, http-client-test, jdbc-hikari, junit, kotlin, kotlin-application, ksp, logback, micronaut-build, properties, readme, serialization-jackson, shade]
