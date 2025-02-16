@@ -1,77 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="br.com.study.ProductServiceTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-01-17T18:56:51" hostname="MacBookPro" time="0.001">
+<testsuite name="br.com.study.ProductServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-01-17T19:09:09" hostname="MacBookPro" time="0.008">
   <properties/>
-  <testcase name="initializationError" classname="br.com.study.ProductServiceTest" time="0.001">
-    <failure message="io.micronaut.context.exceptions.BeanInstantiationException: Bean definition [org.hibernate.SessionFactory] could not be loaded: Error instantiating bean of type  [org.hibernate.boot.SessionFactoryBuilder]&#10;&#10;Message: Entities not found for JPA configuration: 'default' within packages [org.junit.jupiter.engine.descriptor,br.com.study]. Check that you have correctly specified a package containing JPA entities within the &quot;jpa.default.entity-scan.packages&quot; property in your application configuration and that those entities are either compiled with Micronaut or a build time index produced with @Introspected(packages=&quot;foo.bar&quot;, includedAnnotations=Entity.class) declared on your Application class&#10;Path Taken: SessionFactoryPerDataSourceFactory.buildHibernateSessionFactoryBuilder(SessionFactoryBuilder sessionFactoryBuilder) --&gt; SessionFactoryPerDataSourceFactory.buildHibernateSessionFactoryBuilder([SessionFactoryBuilder sessionFactoryBuilder]) --&gt; SessionFactoryPerDataSourceFactory.buildHibernateSessionFactoryBuilder([Metadata metadata],JpaConfiguration jpaConfiguration,String name)" type="io.micronaut.context.exceptions.BeanInstantiationException">io.micronaut.context.exceptions.BeanInstantiationException: Bean definition [org.hibernate.SessionFactory] could not be loaded: Error instantiating bean of type  [org.hibernate.boot.SessionFactoryBuilder]
-
-Message: Entities not found for JPA configuration: 'default' within packages [org.junit.jupiter.engine.descriptor,br.com.study]. Check that you have correctly specified a package containing JPA entities within the &quot;jpa.default.entity-scan.packages&quot; property in your application configuration and that those entities are either compiled with Micronaut or a build time index produced with @Introspected(packages=&quot;foo.bar&quot;, includedAnnotations=Entity.class) declared on your Application class
-Path Taken: SessionFactoryPerDataSourceFactory.buildHibernateSessionFactoryBuilder(SessionFactoryBuilder sessionFactoryBuilder) --&gt; SessionFactoryPerDataSourceFactory.buildHibernateSessionFactoryBuilder([SessionFactoryBuilder sessionFactoryBuilder]) --&gt; SessionFactoryPerDataSourceFactory.buildHibernateSessionFactoryBuilder([Metadata metadata],JpaConfiguration jpaConfiguration,String name)
-	at app//io.micronaut.context.DefaultBeanContext.initializeContext(DefaultBeanContext.java:2000)
-	at app//io.micronaut.context.DefaultApplicationContext.initializeContext(DefaultApplicationContext.java:314)
-	at app//io.micronaut.context.DefaultBeanContext.configureAndStartContext(DefaultBeanContext.java:3318)
-	at app//io.micronaut.context.DefaultBeanContext.start(DefaultBeanContext.java:345)
-	at app//io.micronaut.context.DefaultApplicationContext.start(DefaultApplicationContext.java:216)
-	at app//io.micronaut.test.extensions.AbstractMicronautExtension.startApplicationContext(AbstractMicronautExtension.java:507)
-	at app//io.micronaut.test.extensions.AbstractMicronautExtension.beforeClass(AbstractMicronautExtension.java:346)
-	at app//io.micronaut.test.extensions.junit5.MicronautJunit5Extension.beforeAll(MicronautJunit5Extension.java:84)
-	at java.base@17.0.9/java.util.ArrayList.forEach(ArrayList.java:1511)
-Caused by: io.micronaut.context.exceptions.BeanInstantiationException: Error instantiating bean of type  [org.hibernate.boot.SessionFactoryBuilder]
-
-Message: Entities not found for JPA configuration: 'default' within packages [org.junit.jupiter.engine.descriptor,br.com.study]. Check that you have correctly specified a package containing JPA entities within the &quot;jpa.default.entity-scan.packages&quot; property in your application configuration and that those entities are either compiled with Micronaut or a build time index produced with @Introspected(packages=&quot;foo.bar&quot;, includedAnnotations=Entity.class) declared on your Application class
-Path Taken: SessionFactoryPerDataSourceFactory.buildHibernateSessionFactoryBuilder(SessionFactoryBuilder sessionFactoryBuilder) --&gt; SessionFactoryPerDataSourceFactory.buildHibernateSessionFactoryBuilder([SessionFactoryBuilder sessionFactoryBuilder]) --&gt; SessionFactoryPerDataSourceFactory.buildHibernateSessionFactoryBuilder([Metadata metadata],JpaConfiguration jpaConfiguration,String name)
-	at app//io.micronaut.context.DefaultBeanContext.resolveByBeanFactory(DefaultBeanContext.java:2349)
-	at app//io.micronaut.context.DefaultBeanContext.doCreateBean(DefaultBeanContext.java:2304)
-	at app//io.micronaut.context.DefaultBeanContext.doCreateBean(DefaultBeanContext.java:2316)
-	at app//io.micronaut.context.DefaultBeanContext.createRegistration(DefaultBeanContext.java:3127)
-	at app//io.micronaut.context.SingletonScope.getOrCreate(SingletonScope.java:80)
-	at app//io.micronaut.context.DefaultBeanContext.findOrCreateSingletonBeanRegistration(DefaultBeanContext.java:3029)
-	at app//io.micronaut.context.DefaultBeanContext.resolveBeanRegistration(DefaultBeanContext.java:2990)
-	at app//io.micronaut.context.DefaultBeanContext.resolveBeanRegistration(DefaultBeanContext.java:2756)
-	at app//io.micronaut.context.DefaultBeanContext.getBean(DefaultBeanContext.java:1745)
-	at app//io.micronaut.context.AbstractBeanResolutionContext.getBean(AbstractBeanResolutionContext.java:89)
-	at app//io.micronaut.context.AbstractInitializableBeanDefinition.resolveBean(AbstractInitializableBeanDefinition.java:2188)
-	at app//io.micronaut.context.AbstractInitializableBeanDefinition.getBeanForConstructorArgument(AbstractInitializableBeanDefinition.java:1350)
-	at app//io.micronaut.configuration.hibernate.jpa.conf.$SessionFactoryPerDataSourceFactory$BuildHibernateSessionFactoryBuilder3$Definition.doInstantiate(Unknown Source)
-	at app//io.micronaut.context.AbstractInitializableBeanDefinition.instantiate(AbstractInitializableBeanDefinition.java:770)
-	at app//io.micronaut.context.BeanDefinitionDelegate.instantiate(BeanDefinitionDelegate.java:167)
-	at app//io.micronaut.context.DefaultBeanContext.resolveByBeanFactory(DefaultBeanContext.java:2334)
-	at app//io.micronaut.context.DefaultBeanContext.doCreateBean(DefaultBeanContext.java:2304)
-	at app//io.micronaut.context.DefaultBeanContext.doCreateBean(DefaultBeanContext.java:2316)
-	at app//io.micronaut.context.DefaultBeanContext.createRegistration(DefaultBeanContext.java:3127)
-	at app//io.micronaut.context.SingletonScope.getOrCreate(SingletonScope.java:80)
-	at app//io.micronaut.context.DefaultBeanContext.findOrCreateSingletonBeanRegistration(DefaultBeanContext.java:3029)
-	at app//io.micronaut.context.DefaultBeanContext.resolveBeanRegistration(DefaultBeanContext.java:2990)
-	at app//io.micronaut.context.DefaultBeanContext.resolveBeanRegistration(DefaultBeanContext.java:2756)
-	at app//io.micronaut.context.DefaultBeanContext.getBean(DefaultBeanContext.java:1745)
-	at app//io.micronaut.context.AbstractBeanResolutionContext.getBean(AbstractBeanResolutionContext.java:89)
-	at app//io.micronaut.context.AbstractInitializableBeanDefinition.resolveBean(AbstractInitializableBeanDefinition.java:2188)
-	at app//io.micronaut.context.AbstractInitializableBeanDefinition.getBeanForConstructorArgument(AbstractInitializableBeanDefinition.java:1350)
-	at app//io.micronaut.configuration.hibernate.jpa.conf.$SessionFactoryPerDataSourceFactory$BuildHibernateSessionFactoryBuilder4$Definition.instantiate(Unknown Source)
-	at app//io.micronaut.context.BeanDefinitionDelegate.instantiate(BeanDefinitionDelegate.java:170)
-	at app//io.micronaut.context.DefaultBeanContext.resolveByBeanFactory(DefaultBeanContext.java:2334)
-	at app//io.micronaut.context.DefaultBeanContext.doCreateBean(DefaultBeanContext.java:2304)
-	at app//io.micronaut.context.DefaultBeanContext.doCreateBean(DefaultBeanContext.java:2316)
-	at app//io.micronaut.context.DefaultBeanContext.createRegistration(DefaultBeanContext.java:3127)
-	at app//io.micronaut.context.SingletonScope.getOrCreate(SingletonScope.java:80)
-	at app//io.micronaut.context.DefaultBeanContext.findOrCreateSingletonBeanRegistration(DefaultBeanContext.java:3029)
-	at app//io.micronaut.context.DefaultBeanContext.initializeEagerBean(DefaultBeanContext.java:2693)
-	at app//io.micronaut.context.DefaultBeanContext.initializeContext(DefaultBeanContext.java:1994)
-	... 8 more
-Caused by: io.micronaut.context.exceptions.ConfigurationException: Entities not found for JPA configuration: 'default' within packages [org.junit.jupiter.engine.descriptor,br.com.study]. Check that you have correctly specified a package containing JPA entities within the &quot;jpa.default.entity-scan.packages&quot; property in your application configuration and that those entities are either compiled with Micronaut or a build time index produced with @Introspected(packages=&quot;foo.bar&quot;, includedAnnotations=Entity.class) declared on your Application class
-	at app//io.micronaut.configuration.hibernate.jpa.conf.AbstractHibernateFactory.buildMetadata(AbstractHibernateFactory.java:90)
-	at app//io.micronaut.configuration.hibernate.jpa.conf.SessionFactoryPerDataSourceFactory.buildMetadata(SessionFactoryPerDataSourceFactory.java:93)
-	at app//io.micronaut.configuration.hibernate.jpa.conf.$SessionFactoryPerDataSourceFactory$BuildMetadata2$Definition.doInstantiate(Unknown Source)
-	at app//io.micronaut.context.AbstractInitializableBeanDefinition.instantiate(AbstractInitializableBeanDefinition.java:770)
-	at app//io.micronaut.context.BeanDefinitionDelegate.instantiate(BeanDefinitionDelegate.java:167)
-	at app//io.micronaut.context.DefaultBeanContext.resolveByBeanFactory(DefaultBeanContext.java:2334)
-	... 44 more
-</failure>
-  </testcase>
-  <system-out><![CDATA[?[36m15:56:51.274?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35mi.m.c.DefaultApplicationContext$RuntimeConfiguredEnvironment?[0;39m - Established active environments: [test]
-?[36m15:56:51.321?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35mcom.zaxxer.hikari.HikariDataSource?[0;39m - HikariPool-1 - Starting...
-?[36m15:56:51.414?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35mcom.zaxxer.hikari.pool.HikariPool?[0;39m - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:devDb user=SA
-?[36m15:56:51.415?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35mcom.zaxxer.hikari.HikariDataSource?[0;39m - HikariPool-1 - Start completed.
-?[36m15:56:51.505?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35morg.hibernate.Version?[0;39m - HHH000412: Hibernate ORM core version 6.6.2.Final
+  <testcase name="testItWorks()" classname="br.com.study.ProductServiceTest" time="0.008"/>
+  <system-out><![CDATA[?[36m16:09:09.696?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35mi.m.c.DefaultApplicationContext$RuntimeConfiguredEnvironment?[0;39m - Established active environments: [test]
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

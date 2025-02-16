@@ -23,34 +23,34 @@ Class-Path: resources/ classes/ libs/micronaut-data-hibernate-jpa-4.10.5
  /jackson-module-kotlin-2.17.2.jar libs/kotlin-reflect-1.9.25.jar libs/k
  otlin-stdlib-jdk7-1.9.25.jar libs/kotlin-stdlib-1.9.25.jar libs/kotlin-
  stdlib-jdk8-1.9.25.jar libs/logback-classic-1.5.15.jar libs/h2-2.3.232.
- jar libs/grpc-protobuf-1.68.1.jar libs/grpc-netty-1.68.1.jar libs/grpc-
- util-1.68.1.jar libs/grpc-core-1.68.1.jar libs/grpc-stub-1.68.1.jar lib
- s/grpc-context-1.68.1.jar libs/grpc-protobuf-lite-1.68.1.jar libs/grpc-
- api-1.68.1.jar libs/guava-33.3.1-jre.jar libs/jsr305-3.0.2.jar libs/jak
- arta.annotation-api-2.1.1.jar libs/netty-codec-http2-4.1.116.Final.jar 
- libs/netty-handler-proxy-4.1.116.Final.jar libs/netty-codec-http-4.1.11
- 6.Final.jar libs/netty-handler-4.1.116.Final.jar libs/netty-transport-n
- ative-unix-common-4.1.116.Final.jar libs/netty-codec-socks-4.1.116.Fina
- l.jar libs/netty-codec-4.1.116.Final.jar libs/netty-transport-4.1.116.F
- inal.jar libs/netty-buffer-4.1.116.Final.jar libs/netty-resolver-4.1.11
- 6.Final.jar libs/netty-common-4.1.116.Final.jar libs/reactor-core-3.6.1
- 0.jar libs/micronaut-core-reactive-4.7.11.jar libs/reactive-streams-1.0
- .4.jar libs/micronaut-core-4.7.11.jar libs/proto-google-common-protos-2
- .41.0.jar libs/protobuf-java-3.25.5.jar libs/logback-core-1.5.15.jar li
- bs/HikariCP-6.0.0.jar libs/slf4j-api-2.0.16.jar libs/hibernate-core-6.6
- .2.Final.jar libs/jakarta.persistence-api-3.1.0.jar libs/jakarta.transa
- ction-api-2.0.1.jar libs/byte-buddy-1.15.10.jar libs/jakarta.validation
- -api-3.1.0.jar libs/annotations-13.0.jar libs/jakarta.inject-api-2.0.1.
- jar libs/config-1.4.3.jar libs/gson-2.11.0.jar libs/jboss-logging-3.5.0
- .Final.jar libs/hibernate-commons-annotations-7.0.3.Final.jar libs/jand
- ex-3.2.0.jar libs/classmate-1.5.1.jar libs/jaxb-runtime-4.0.2.jar libs/
- jaxb-core-4.0.2.jar libs/jakarta.xml.bind-api-4.0.0.jar libs/antlr4-run
- time-4.13.0.jar libs/angus-activation-2.0.0.jar libs/jakarta.activation
- -api-2.1.1.jar libs/annotations-4.1.1.4.jar libs/animal-sniffer-annotat
- ions-1.24.jar libs/error_prone_annotations-2.28.0.jar libs/perfmark-api
- -0.27.0.jar libs/txw2-4.0.2.jar libs/istack-commons-runtime-4.1.1.jar l
- ibs/failureaccess-1.0.2.jar libs/listenablefuture-9999.0-empty-to-avoid
- -conflict-with-guava.jar libs/checker-qual-3.43.0.jar libs/j2objc-annot
- ations-3.0.0.jar
+ jar libs/snakeyaml-2.2.jar libs/grpc-protobuf-1.68.1.jar libs/grpc-nett
+ y-1.68.1.jar libs/grpc-util-1.68.1.jar libs/grpc-core-1.68.1.jar libs/g
+ rpc-stub-1.68.1.jar libs/grpc-context-1.68.1.jar libs/grpc-protobuf-lit
+ e-1.68.1.jar libs/grpc-api-1.68.1.jar libs/guava-33.3.1-jre.jar libs/js
+ r305-3.0.2.jar libs/jakarta.annotation-api-2.1.1.jar libs/netty-codec-h
+ ttp2-4.1.116.Final.jar libs/netty-handler-proxy-4.1.116.Final.jar libs/
+ netty-codec-http-4.1.116.Final.jar libs/netty-handler-4.1.116.Final.jar
+  libs/netty-transport-native-unix-common-4.1.116.Final.jar libs/netty-c
+ odec-socks-4.1.116.Final.jar libs/netty-codec-4.1.116.Final.jar libs/ne
+ tty-transport-4.1.116.Final.jar libs/netty-buffer-4.1.116.Final.jar lib
+ s/netty-resolver-4.1.116.Final.jar libs/netty-common-4.1.116.Final.jar 
+ libs/reactor-core-3.6.10.jar libs/micronaut-core-reactive-4.7.11.jar li
+ bs/reactive-streams-1.0.4.jar libs/micronaut-core-4.7.11.jar libs/proto
+ -google-common-protos-2.41.0.jar libs/protobuf-java-3.25.5.jar libs/log
+ back-core-1.5.15.jar libs/HikariCP-6.0.0.jar libs/slf4j-api-2.0.16.jar 
+ libs/hibernate-core-6.6.2.Final.jar libs/jakarta.persistence-api-3.1.0.
+ jar libs/jakarta.transaction-api-2.0.1.jar libs/byte-buddy-1.15.10.jar 
+ libs/jakarta.validation-api-3.1.0.jar libs/annotations-13.0.jar libs/ja
+ karta.inject-api-2.0.1.jar libs/config-1.4.3.jar libs/gson-2.11.0.jar l
+ ibs/jboss-logging-3.5.0.Final.jar libs/hibernate-commons-annotations-7.
+ 0.3.Final.jar libs/jandex-3.2.0.jar libs/classmate-1.5.1.jar libs/jaxb-
+ runtime-4.0.2.jar libs/jaxb-core-4.0.2.jar libs/jakarta.xml.bind-api-4.
+ 0.0.jar libs/antlr4-runtime-4.13.0.jar libs/angus-activation-2.0.0.jar 
+ libs/jakarta.activation-api-2.1.1.jar libs/annotations-4.1.1.4.jar libs
+ /animal-sniffer-annotations-1.24.jar libs/error_prone_annotations-2.28.
+ 0.jar libs/perfmark-api-0.27.0.jar libs/txw2-4.0.2.jar libs/istack-comm
+ ons-runtime-4.1.1.jar libs/failureaccess-1.0.2.jar libs/listenablefutur
+ e-9999.0-empty-to-avoid-conflict-with-guava.jar libs/checker-qual-3.43.
+ 0.jar libs/j2objc-annotations-3.0.0.jar
 Main-Class: br.com.study.ApplicationKt
 
