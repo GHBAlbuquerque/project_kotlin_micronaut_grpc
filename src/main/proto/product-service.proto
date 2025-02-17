@@ -1,18 +1,30 @@
 syntax = "proto3";
 
+import "google/protobuf/wrappers.proto";
+
 option java_multiple_files = true;
-option java_package = "br.com.study";
+option java_package = "br.com.study"; // onde irão as classes compiladas
 option java_outer_classname = "ProductService";
 option objc_class_prefix = "HLW";
 
+// 'url'
 package br.com.study;
 
 service ProductServiceService {
-  rpc send (ProductServiceRequest) returns (ProductServiceReply) {}
+  rpc send (ProductServiceRequest) returns (ProductServiceReply) {} // posso ter inumeros sends dentro de um mesmo service
+}
+
+enum STATUS {
+  OK = 0;
+  PARTIAL = 1;
+  ERROR = 10;
 }
 
 message ProductServiceRequest {
-  string name = 1;
+  string name = 1; // todos os atributos são numerados no proto para permitir serializacao/deserializacao correta (assigning field number)
+  google.protobuf.StringValue codigoDeBarras = 2; // tipo importado de outro proto (da google)
+  double price = 3;
+  STATUS status = 4;
 }
 
 message ProductServiceReply {
