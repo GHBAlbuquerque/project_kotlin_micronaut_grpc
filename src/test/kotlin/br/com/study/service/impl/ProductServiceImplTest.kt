@@ -24,6 +24,6 @@ internal class ProductServiceImplTest {
 
         val result = productService.create(productInput.toRequest())
 
-        assert(result.name == product.name)
+        assert(productInput.name == result.name)
     }
 }
