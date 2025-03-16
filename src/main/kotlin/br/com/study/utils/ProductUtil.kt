@@ -13,6 +13,14 @@ fun Product.toResponse(): ProductRes {
     )
 }
 
+fun Product.toRequest(): ProductReq {
+    return ProductReq(
+        name = name,
+        price = price,
+        quantityInStock = quantityInStock
+    )
+}
+
 fun ProductReq.toDomain(): Product {
     return Product(
         id = null,

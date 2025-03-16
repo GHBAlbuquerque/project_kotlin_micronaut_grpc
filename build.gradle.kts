@@ -33,6 +33,8 @@ dependencies {
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
     runtimeOnly("com.h2database:h2")
     runtimeOnly("org.yaml:snakeyaml")
+    testImplementation("org.mockito:mockito-core:5.16.1")
+
 }
 
 
