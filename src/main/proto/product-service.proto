@@ -22,9 +22,10 @@ enum STATUS {
 
 message ProductServiceRequest {
   string name = 1; // todos os atributos são numerados no proto para permitir serializacao/deserializacao correta (assigning field number)
-  google.protobuf.StringValue codigoDeBarras = 2; // tipo importado de outro proto (da google)
-  double price = 3;
-  STATUS status = 4;
+  double price = 2;
+  int32 quantity_in_stock = 3;
+  //google.protobuf.StringValue codigoDeBarras = 4; // tipo importado de outro proto (da google)
+  //STATUS status = 5;
 }
 
 message ProductServiceReply {
