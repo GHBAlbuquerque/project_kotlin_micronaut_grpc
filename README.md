@@ -1,34 +1,36 @@
-## Micronaut 4.7.4 Documentation
+# Prodcut Service (gRPC, Kotlin and Micronaut)
 
-- [User Guide](https://docs.micronaut.io/4.7.4/guide/index.html)
-- [API Reference](https://docs.micronaut.io/4.7.4/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/4.7.4/guide/configurationreference.html)
-- [Micronaut Guides](https://guides.micronaut.io/index.html)
----
+Project based on the Udemy course by Tony Augusto Silva. Done with Micronaut framework, gRPC and Kotlin.
+[Udemy Link](https://www.udemy.com/share/10da6D3@PnrNCowtb0qfY0EjrpZ7FT8ao-Vey2Sw8W-sJNnGzRplAg6LyxX4sj3kz1jwzphm/)
 
-- [Protobuf Gradle Plugin](https://plugins.gradle.org/plugin/com.google.protobuf)
-- [Micronaut Gradle Plugin documentation](https://micronaut-projects.github.io/micronaut-gradle-plugin/latest/)
-- [GraalVM Gradle Plugin documentation](https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html)
-- [Shadow Gradle Plugin](https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow)
-## Feature discovery-core documentation
+## Description
 
-- [Micronaut Discovery Core documentation](https://micronaut-projects.github.io/micronaut-discovery-client/latest/guide/)
+### What is gRPC?
 
+TBD
 
-## Feature jdbc-hikari documentation
+### gRPC vs REST
 
-- [Micronaut Hikari JDBC Connection Pool documentation](https://micronaut-projects.github.io/micronaut-sql/latest/guide/index.html#jdbc)
+gRPC:
 
+Faster and More Efficient: gRPC uses HTTP/2 and binary encoding (Protobuf) for faster data transmission and lower latency.
+Streaming: gRPC supports various streaming patterns (bidirectional, server, client) allowing for real-time communication.
+Tight Coupling: gRPC's client and server are tightly coupled, requiring the same Protobuf definition, which can lead to more dependencies.
+Built-in Code Generation: gRPC offers built-in code generation tools for client and server stubs.
+Ideal for: High-performance applications, microservices, and real-time systems.
+Examples: Netflix, video streaming, financial services.
 
-## Feature ksp documentation
-
-- [Micronaut Kotlin Symbol Processing (KSP) documentation](https://docs.micronaut.io/latest/guide/#kotlin)
-
-- [https://kotlinlang.org/docs/ksp-overview.html](https://kotlinlang.org/docs/ksp-overview.html)
-
-
-## Feature serialization-jackson documentation
-
-- [Micronaut Serialization Jackson Core documentation](https://micronaut-projects.github.io/micronaut-serialization/latest/guide/)
-
+REST:
+Simpler and More Flexible:
+REST uses HTTP and text-based formats (JSON, XML) which are easy to understand and debug.
+Stateless and Cacheable:
+REST APIs are stateless, meaning each request is independent, and data can be cached.
+Loosely Coupled:
+REST APIs are loosely coupled, allowing for independent development and deployment of client and server.
+No Built-in Code Generation:
+REST requires third-party tools (like Swagger, Postman) for code generation.
+Ideal for:
+Public web services, applications that need to be accessible from web browsers.
+Examples:
+Web APIs, social media platforms.
 
