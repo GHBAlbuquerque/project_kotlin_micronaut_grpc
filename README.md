@@ -1,27 +1,65 @@
-## Micronaut 4.7.4 Documentation
+# Prodcut Service (gRPC, Kotlin and Micronaut)
 
-- [User Guide](https://docs.micronaut.io/4.7.4/guide/index.html)
-- [API Reference](https://docs.micronaut.io/4.7.4/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/4.7.4/guide/configurationreference.html)
-- [Micronaut Guides](https://guides.micronaut.io/index.html)
----
+Project based on the Udemy course by Tony Augusto Silva. Done with Micronaut framework, gRPC and Kotlin.
+[Udemy Link](https://www.udemy.com/share/10da6D3@PnrNCowtb0qfY0EjrpZ7FT8ao-Vey2Sw8W-sJNnGzRplAg6LyxX4sj3kz1jwzphm/)
 
-- [Protobuf Gradle Plugin](https://plugins.gradle.org/plugin/com.google.protobuf)
-- [Micronaut Gradle Plugin documentation](https://micronaut-projects.github.io/micronaut-gradle-plugin/latest/)
-- [GraalVM Gradle Plugin documentation](https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html)
-- [Shadow Gradle Plugin](https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow)
-## Feature discovery-core documentation
+#### Technologies
+![image](https://img.shields.io/badge/gRPC-blue?style=for-the-badge&logo=grpc&logoColor=white)
+![image](https://img.shields.io/badge/Kotlin-a64eff?style=for-the-badge&logo=kotlin&logoColor=white)
+![image](https://img.shields.io/badge/Micronaut-black?style=for-the-badge&logo=Micronaut&logoColor=black)
 
-- [Micronaut Discovery Core documentation](https://micronaut-projects.github.io/micronaut-discovery-client/latest/guide/)
+## Description :book: 
 
+### What is RPC?
 
-## Feature jdbc-hikari documentation
+Remote Procedure Call (RPC):
+Think of RPC as a way for software components on different machines to communicate as if they were local procedures. Instead of sending data in a traditional format, RPCs enable one machine to directly call a function or method on another machine, as if it's a local function call.
 
-- [Micronaut Hikari JDBC Connection Pool documentation](https://micronaut-projects.github.io/micronaut-sql/latest/guide/index.html#jdbc)
+#### What is gRPC?
+gRPC is a high-performance, open-source Remote Procedure Call (RPC) framework developed by Google, primarily for connecting services across distributed environments.
 
+Utilizes: GTTP2 and Protocol Buffers (Protobuf) for efficient serialization and deserialization of data.
 
-## Feature serialization-jackson documentation
+### gRPC vs REST 🆚
 
-- [Micronaut Serialization Jackson Core documentation](https://micronaut-projects.github.io/micronaut-serialization/latest/guide/)
+gRPC:
 
+* Faster and More Efficient: gRPC uses HTTP/2 and binary encoding (Protobuf) for faster data transmission and lower latency.
+* Streaming: supports various streaming patterns (bidirectional, server, client) allowing for real-time communication.
+* Tight Coupling: client and server are tightly coupled, requiring the same Protobuf definition, which can lead to more dependencies.
+* Built-in Code Generation: offers built-in code generation tools for client and server stubs.
+* Ideal for: High-performance applications, microservices, and real-time systems.
+
+Examples: ```Netflix, video streaming, financial services.```
+
+REST:
+* Simpler and More Flexible: uses HTTP and text-based formats (JSON, XML) which are easy to understand and debug.
+* Stateless and Cacheable: meaning each request is independent, and data can be cached.
+* Loosely Coupled: allows for independent development and deployment of client and server.
+* No Built-in Code Generation: requires third-party tools (like Swagger, Postman) for code generation.
+* Ideal for: Public web services, applications that need to be accessible from web browsers.
+
+Examples: ```Web APIs, social media platforms.```
+
+## Running locally :computer: 
+
+### How to Run
+
+1. Clone the repository:
+2. Add as Gradle project
+3. Build the project:
+   ```bash
+   ./gradlew build
+   ```
+4. Run the application with the Application.kt class
+   
+
+### Making requests
+
+Insomnia request configuration:
+```
+- method: gRPC
+- importo product-service.proto
+- port: 0.0.0.0:50051
+```
 
