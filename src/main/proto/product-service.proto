@@ -11,7 +11,7 @@ option objc_class_prefix = "HLW";
 package br.com.study;
 
 service ProductServiceService {
-  rpc send (ProductServiceRequest) returns (ProductServiceReply) {} // posso ter inumeros sends dentro de um mesmo service
+  rpc Create (ProductServiceRequest) returns (ProductServiceResponse) {} // posso ter inumeros sends/metodos dentro de um mesmo service
 }
 
 enum STATUS {
@@ -28,6 +28,6 @@ message ProductServiceRequest {
   //STATUS status = 5;
 }
 
-message ProductServiceReply {
+message ProductServiceResponse {
   string message = 1;
 }

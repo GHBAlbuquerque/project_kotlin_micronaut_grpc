@@ -16,6 +16,6 @@ class ProductServiceImpl(private val productRepository: ProductRepository) : Pro
 
         val result = productRepository.save(product)
 
-        return result.toResponse() // Usando 'extension function' declarda no Kotlin file ProductUtil
+        return result.toResponse() // Usando 'extension function' declarada no Kotlin file ProductUtil
     }
 }
