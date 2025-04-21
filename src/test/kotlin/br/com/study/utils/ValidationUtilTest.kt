@@ -1,7 +1,6 @@
 package br.com.study.utils
 
 import br.com.study.ProductServiceRequest
-import io.grpc.StatusRuntimeException
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
