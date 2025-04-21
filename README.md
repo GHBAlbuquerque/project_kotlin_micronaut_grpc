@@ -20,7 +20,7 @@ gRPC is a high-performance, open-source Remote Procedure Call (RPC) framework de
 
 Utilizes: GTTP2 and Protocol Buffers (Protobuf) for efficient serialization and deserialization of data.
 
-### gRPC vs REST :question_mark: 
+### gRPC vs REST 🆚
 
 gRPC:
 
