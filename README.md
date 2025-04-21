@@ -1,4 +1,4 @@
-# Prodcut Service (gRPC, Kotlin and Micronaut)
+# Product Service (gRPC, Kotlin and Micronaut)
 
 Project based on the Udemy course by Tony Augusto Silva. Done with Micronaut framework, gRPC and Kotlin.
 [Udemy Link](https://www.udemy.com/share/10da6D3@PnrNCowtb0qfY0EjrpZ7FT8ao-Vey2Sw8W-sJNnGzRplAg6LyxX4sj3kz1jwzphm/)
