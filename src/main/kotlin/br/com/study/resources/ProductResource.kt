@@ -3,6 +3,7 @@ package br.com.study.resources
 import br.com.study.ProductServiceRequest
 import br.com.study.ProductServiceResponse
 import br.com.study.ProductServiceServiceGrpc
+import br.com.study.dto.ProductReq
 import br.com.study.services.ProductService
 import io.grpc.stub.StreamObserver
 import io.micronaut.grpc.annotation.GrpcService
@@ -11,15 +12,18 @@ import io.micronaut.grpc.annotation.GrpcService
 class ProductResource(private val productService: ProductService) : ProductServiceServiceGrpc.ProductServiceServiceImplBase() {
 
     override fun create(request: ProductServiceRequest?, responseObserver: StreamObserver<ProductServiceResponse>?) {
+        val productReq = ProductReq(name = request!!.name, price = request.price, quantityInStock = request.quantityInStock)
 
-        val toSend = "Hello, ${request?.name}"
-
-        val reply = ProductServiceResponse.newBuilder()
-            .setMessage(toSend)
+        val productRes = productService.create(productReq)
+        val response = ProductServiceResponse.newBuilder()
+            .setId(productRes.id)
+            .setName(productRes.name)
+            .setPrice(productRes.price)
+            .setQuantityInStock(productRes.quantityInStock)
             .build()
 
-        responseObserver?.onNext(reply)
-        responseObserver?.onCompleted()
+        responseObserver?.onNext(response) // Send the response
+        responseObserver?.onCompleted() // Complete the call
     }
 }
 
