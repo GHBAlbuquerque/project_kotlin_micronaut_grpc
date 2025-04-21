@@ -2,6 +2,7 @@ package br.com.study.services.impl
 
 import br.com.study.dto.ProductReq
 import br.com.study.dto.ProductRes
+import br.com.study.exceptions.AlreadyExistsException
 import br.com.study.repositories.ProductRepository
 import br.com.study.services.ProductService
 import br.com.study.utils.toDomain
@@ -12,10 +13,16 @@ import jakarta.inject.Singleton
 class ProductServiceImpl(private val productRepository: ProductRepository) : ProductService {
 
     override fun create(req: ProductReq): ProductRes {
-        val product = req.toDomain()
+        verifyName(req.name)
 
-        val result = productRepository.save(product)
+        val result = productRepository.save(req.toDomain())
 
-        return result.toResponse() // Usando 'extension function' declarada no Kotlin file ProductUtil
+        return result.toResponse() // using 'extension function' declared on Kotlin file ProductConverterUtil
+    }
+
+    private fun verifyName(name: String) {
+        productRepository.findByNameIgnoreCase(name)?.let {// only enters if a product with this name exists
+            throw AlreadyExistsException(name);
+        }
     }
 }

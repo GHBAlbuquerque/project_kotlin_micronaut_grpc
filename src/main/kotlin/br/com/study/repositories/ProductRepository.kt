@@ -6,6 +6,6 @@ import io.micronaut.data.jpa.repository.JpaRepository
 
 @Repository
 interface ProductRepository : JpaRepository<Product, Long> {
-    fun findByName(name: String): Product?
+    fun findByNameIgnoreCase(name: String): Product? // ? works like optional() in java
     fun existsByName(name: String): Boolean
 }

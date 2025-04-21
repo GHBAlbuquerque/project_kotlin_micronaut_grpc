@@ -9,7 +9,7 @@ import jakarta.persistence.Id
 data class Product(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long?, //aceita nulo para poder gerar automático no banco
+    val id: Long?, //accepts null for automatic generation on database
     val name: String,
     val price: Double,
     val quantityInStock: Int
