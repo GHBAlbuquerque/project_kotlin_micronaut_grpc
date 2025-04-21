@@ -1,7 +1,7 @@
 # Product Service (gRPC, Kotlin and Micronaut)
 
-Project based on the Udemy course by Tony Augusto Silva. Done with Micronaut framework, gRPC and Kotlin.
-[Udemy Link](https://www.udemy.com/share/10da6D3@PnrNCowtb0qfY0EjrpZ7FT8ao-Vey2Sw8W-sJNnGzRplAg6LyxX4sj3kz1jwzphm/)
+Project based on the Udemy course by [Tony Augusto Silva](https://github.com/TonyALS). Done with Micronaut framework, gRPC and Kotlin.
+[Udemy Course Link](https://www.udemy.com/share/10da6D3@PnrNCowtb0qfY0EjrpZ7FT8ao-Vey2Sw8W-sJNnGzRplAg6LyxX4sj3kz1jwzphm/)
 
 #### Technologies
 ![image](https://img.shields.io/badge/gRPC-blue?style=for-the-badge&logo=grpc&logoColor=white)
@@ -63,3 +63,10 @@ Insomnia request configuration:
 - port: 0.0.0.0:50051
 ```
 
+## Authors
+
+*Giovanna Albuquerque* [@GHBAlbuquerque](https://github.com/GHBAlbuquerque)
+
+*Tony Augusto* [@tonyals](https://github.com/TonyALS)
+
+Done in 2025
