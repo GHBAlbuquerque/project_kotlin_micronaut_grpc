@@ -65,4 +65,15 @@ class ValidationUtilTest {
             ValidationUtil.isValidPayload(request)
         }
     }
+
+    @Test
+    fun `when validatePayload method is called with a null payload, should throw exception`() {
+        val request = null
+
+        Assertions.assertThrowsExactly(
+            IllegalArgumentException::class.java
+        ) {
+            ValidationUtil.isValidPayload(request)
+        }
+    }
 }
