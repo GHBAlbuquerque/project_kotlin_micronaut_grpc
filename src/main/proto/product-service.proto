@@ -10,7 +10,7 @@ option objc_class_prefix = "HLW";
 // 'url'
 package br.com.study;
 
-service ProductServiceService {
+service ProductsService {
   rpc Create (ProductServiceRequest) returns (ProductServiceResponse) {} // posso ter inumeros sends/metodos dentro de um mesmo service
 }
 

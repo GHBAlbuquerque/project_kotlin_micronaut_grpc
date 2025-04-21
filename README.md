@@ -34,3 +34,14 @@ Public web services, applications that need to be accessible from web browsers.
 Examples:
 Web APIs, social media platforms.
 
+## Running locally
+
+### Calling application
+
+Insomnia request configuration:
+```
+- method: gRPC
+- importo product-service.proto
+- port: 0.0.0.0:50051
+```
+
