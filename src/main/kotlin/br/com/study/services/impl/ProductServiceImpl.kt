@@ -3,6 +3,7 @@ package br.com.study.services.impl
 import br.com.study.dto.ProductReq
 import br.com.study.dto.ProductRes
 import br.com.study.exceptions.AlreadyExistsException
+import br.com.study.exceptions.ProductNotFoundException
 import br.com.study.repositories.ProductRepository
 import br.com.study.services.ProductService
 import br.com.study.utils.toDomain
@@ -20,9 +21,12 @@ class ProductServiceImpl(private val productRepository: ProductRepository) : Pro
         return result.toResponse() // using 'extension function' declared on Kotlin file ProductConverterUtil
     }
 
-    override fun findById(id: Long): ProductRes? {
+    override fun findById(id: Long): ProductRes {
         val result = productRepository.findById(id)
-        return result?.get()?.toResponse()
+
+        result.orElseThrow { ProductNotFoundException(id) }
+
+        return result.get().toResponse()
     }
 
     private fun verifyName(name: String) {

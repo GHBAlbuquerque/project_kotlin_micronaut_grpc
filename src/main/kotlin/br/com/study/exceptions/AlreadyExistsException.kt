@@ -2,7 +2,7 @@ package br.com.study.exceptions
 
 class AlreadyExistsException(private val productName : String) : BaseBusinessException() {
     override fun errorMessage(): String {
-        return "Product witrh name '$productName' already exists."
+        return "Product with name '$productName' already exists."
     }
 
     override fun statusCode(): io.grpc.Status.Code {

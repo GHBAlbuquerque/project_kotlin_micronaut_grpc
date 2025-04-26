@@ -60,6 +60,8 @@ Insomnia request configuration:
 ```
 - method: gRPC
 - importo product-service.proto
+- select desired method
+- change desired unary
 - port: 0.0.0.0:50051
 ```
 
