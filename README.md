@@ -41,6 +41,11 @@ REST:
 
 Examples: ```Web APIs, social media platforms.```
 
+## Features :toolbox:
+
+* Create Product
+* Find Product by ID
+
 ## Running locally :computer: 
 
 ### How to Run
