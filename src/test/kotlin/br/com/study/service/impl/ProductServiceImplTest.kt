@@ -3,6 +3,7 @@ package br.com.study.service.impl
 import br.com.study.domain.Product
 import br.com.study.dto.ProductReq
 import br.com.study.exceptions.AlreadyExistsException
+import br.com.study.exceptions.ProductNotFoundException
 import br.com.study.repositories.ProductRepository
 import br.com.study.services.impl.ProductServiceImpl
 import br.com.study.utils.toRequest
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
 import org.mockito.Mockito.`when`
+import java.util.*
 
 internal class ProductServiceImplTest {
 
@@ -41,6 +43,33 @@ internal class ProductServiceImplTest {
             AlreadyExistsException::class.java
         ) {
             productService.create(productInput.toRequest())
+        }
+    }
+
+    @Test
+    fun `when findbyID method is called with valid ID, should return a product`() {
+        val productId = 1L
+        val product = Product(id = productId, name = "Product 1", price = 10.0, quantityInStock = 2)
+
+        `when`(productRepository.findById(productId))
+            .thenReturn(Optional.of(product))
+
+        val result = productService.findById(productId)
+
+        assert(productId == result.id)
+    }
+
+    @Test
+    fun `when findbyID method is called with non-existant product should throw ProductNotFoundException`() {
+        val productId = 1L
+
+        `when`(productRepository.findById(productId))
+            .thenReturn(Optional.empty())
+
+        Assertions.assertThrowsExactly(
+            ProductNotFoundException::class.java
+        ) {
+            productService.findById(productId)
         }
     }
 }

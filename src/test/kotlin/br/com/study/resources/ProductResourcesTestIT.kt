@@ -1,6 +1,6 @@
 package br.com.study.resources
 
-import br.com.study.ProductServiceRequest
+import br.com.study.CreateProductServiceRequest
 import br.com.study.ProductsServiceGrpc.ProductsServiceBlockingStub
 import io.grpc.StatusRuntimeException
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
@@ -14,7 +14,7 @@ internal class ProductResourcesTestIT(
 
     @Test
     fun `when ProductsServiceGrpc create method is called with valid data a success message is returned`() {
-        val request = ProductServiceRequest.newBuilder()
+        val request = CreateProductServiceRequest.newBuilder()
             .setName("Guaraná")
             .setPrice(9.99)
             .setQuantityInStock(5)
@@ -28,7 +28,7 @@ internal class ProductResourcesTestIT(
 
     @Test
     fun `when ProductsServiceGrpc create method is called with invalid data a error message is returned`() {
-        val request = ProductServiceRequest.newBuilder()
+        val request = CreateProductServiceRequest.newBuilder()
             .setName("")
             .setPrice(9.99)
             .setQuantityInStock(5)
