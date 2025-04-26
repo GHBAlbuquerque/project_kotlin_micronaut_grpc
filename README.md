@@ -41,6 +41,11 @@ REST:
 
 Examples: ```Web APIs, social media platforms.```
 
+## Features :toolbox:
+
+* Create Product
+* Find Product by ID
+
 ## Running locally :computer: 
 
 ### How to Run
@@ -60,6 +65,8 @@ Insomnia request configuration:
 ```
 - method: gRPC
 - importo product-service.proto
+- select desired method
+- change desired unary
 - port: 0.0.0.0:50051
 ```
 

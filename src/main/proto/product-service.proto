@@ -11,7 +11,8 @@ option objc_class_prefix = "HLW";
 package br.com.study;
 
 service ProductsService {
-  rpc Create (ProductServiceRequest) returns (ProductServiceResponse) {} // posso ter inumeros sends/metodos dentro de um mesmo service
+  rpc Create (CreateProductServiceRequest) returns (ProductServiceResponse) {} // there can be many sends/metodos inside a service
+  rpc FindById (FindProductByIdServiceRequest) returns (ProductServiceResponse) {}
 }
 
 enum STATUS {
@@ -20,7 +21,11 @@ enum STATUS {
   ERROR = 10;
 }
 
-message ProductServiceRequest {
+message FindProductByIdServiceRequest {
+  int64 id = 1;
+}
+
+message CreateProductServiceRequest {
   string name = 1; // All attributes are numbered in proto to allow correct serialization/deserialization (assigning field number)
   double price = 2;
   int32 quantity_in_stock = 3;
