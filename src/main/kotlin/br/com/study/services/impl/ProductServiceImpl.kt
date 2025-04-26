@@ -20,6 +20,11 @@ class ProductServiceImpl(private val productRepository: ProductRepository) : Pro
         return result.toResponse() // using 'extension function' declared on Kotlin file ProductConverterUtil
     }
 
+    override fun findById(id: Long): ProductRes? {
+        val result = productRepository.findById(id)
+        return result?.get()?.toResponse()
+    }
+
     private fun verifyName(name: String) {
         productRepository.findByNameIgnoreCase(name)?.let {// only enters if a product with this name exists
             throw AlreadyExistsException(name);

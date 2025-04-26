@@ -1,11 +1,11 @@
 package br.com.study.utils
 
-import br.com.study.ProductServiceRequest
+import br.com.study.CreateProductServiceRequest
 
 class ValidationUtil {
     companion object { // Companion object to allow static-like access
 
-        fun isValidPayload(payload: ProductServiceRequest?): ProductServiceRequest {
+        fun isValidPayload(payload: CreateProductServiceRequest?): CreateProductServiceRequest {
 
             payload?.let {// check if payload is not null
                 if (it.name.isNullOrBlank()) {
