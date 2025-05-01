@@ -6,6 +6,7 @@ import br.com.study.exceptions.ProductNotFoundException
 import br.com.study.repositories.ProductRepository
 import br.com.study.services.impl.ProductServiceImpl
 import br.com.study.utils.toRequest
+import br.com.study.utils.toUpdateRequest
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
@@ -69,6 +70,53 @@ internal class ProductServiceImplTest {
             ProductNotFoundException::class.java
         ) {
             productService.findById(productId)
+        }
+    }
+
+    @Test
+    fun `when update method is called with valid data, should update a product`() {
+        val productUpdateInput = Product(id = 1, name = "Product 1", price = 8.0, quantityInStock = 7)
+        val product = Product(id = 1, name = "Product 1", price = 10.0, quantityInStock = 2)
+        val productUpdated = Product(id = 1, name = "Product 1", price = 8.0, quantityInStock = 7)
+
+        `when`(productRepository.findById(productUpdateInput.id))
+            .thenReturn(Optional.of(product))
+
+        `when`(productRepository.update(productUpdateInput))
+            .thenReturn(productUpdated)
+
+        val result = productService.update(productUpdateInput.toUpdateRequest())
+
+        assert(productUpdateInput.name == result.name)
+    }
+
+    @Test
+    fun `when update method is called with duplicate product name should throw AlreadyExistsException`() {
+        val productUpdateInput = Product(id = 1, name = "Product 1", price = 10.0, quantityInStock = 2)
+        val product = Product(id = 1, name = "Product 1", price = 10.0, quantityInStock = 2)
+
+        `when`(productRepository.findByNameIgnoreCase(productUpdateInput.name))
+            .thenReturn(product)
+
+        Assertions.assertThrowsExactly(
+            AlreadyExistsException::class.java
+        ) {
+            productService.update(productUpdateInput.toUpdateRequest())
+        }
+    }
+
+    @Test
+    fun `when update method is called with non-existant product, should throw AlreadyExistsException`() {
+        val productId = 1L
+        val productUpdateInput = Product(id = 1, name = "Product 1", price = 10.0, quantityInStock = 2)
+
+        `when`(productRepository.findById(productId))
+            .thenReturn(Optional.empty())
+
+        Assertions.assertThrowsExactly(
+            ProductNotFoundException::class.java
+        ) {
+            productService.update(productUpdateInput.toUpdateRequest())
         }
     }
 }
