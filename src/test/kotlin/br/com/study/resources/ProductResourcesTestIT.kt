@@ -7,20 +7,32 @@ import br.com.study.UpdateProductServiceRequest
 import io.grpc.Status
 import io.grpc.StatusRuntimeException
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
+import org.flywaydb.core.Flyway
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestMethodOrder
+import org.junit.jupiter.api.MethodOrderer
 
 @MicronautTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 internal class ProductResourcesTestIT(
+    private val flyway: Flyway,
     private val productsServiceBlockingStub: ProductsServiceBlockingStub
 ) {
+
+    @BeforeEach
+    fun setup(){
+        //flyway.clean()
+        flyway.migrate()
+    }
 
     @Test
     @Order(1)
     fun `when ProductsServiceGrpc create method is called with valid data, a success message is returned`() {
         val request = CreateProductServiceRequest.newBuilder()
-            .setName("Tubaína")
+            .setName("Guaraná")
             .setPrice(9.99)
             .setQuantityInStock(5)
             .build();
@@ -28,7 +40,7 @@ internal class ProductResourcesTestIT(
         val response = productsServiceBlockingStub.create(request)
 
         Assertions.assertEquals(6, response.id)
-        Assertions.assertEquals("Tubaína", response.name)
+        Assertions.assertEquals("Guaraná", response.name)
     }
 
     @Test
@@ -95,7 +107,7 @@ internal class ProductResourcesTestIT(
     fun `when ProductsServiceGrpc update method is called with valid data, a success message is returned`() {
         val request = UpdateProductServiceRequest.newBuilder()
             .setId(5L)
-            .setName("Guaraná")
+            .setName("Tubaína")
             .setPrice(9.99)
             .setQuantityInStock(5)
             .build();
@@ -103,7 +115,7 @@ internal class ProductResourcesTestIT(
         val response = productsServiceBlockingStub.update(request)
 
         Assertions.assertEquals(5L, response.id)
-        Assertions.assertEquals("Guaraná", response.name)
+        Assertions.assertEquals("Tubaína", response.name)
     }
 
     @Test
