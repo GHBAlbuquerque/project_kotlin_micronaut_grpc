@@ -1,6 +1,7 @@
 package br.com.study.utils
 
 import br.com.study.CreateProductServiceRequest
+import br.com.study.exceptions.InvalidArgumentException
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
@@ -29,7 +30,7 @@ class ValidationUtilTest {
             .build();
 
         Assertions.assertThrowsExactly(
-            IllegalArgumentException::class.java
+            InvalidArgumentException::class.java
         ) {
             ValidationUtil.isValidPayload(request)
         }
@@ -44,7 +45,7 @@ class ValidationUtilTest {
             .build();
 
         Assertions.assertThrowsExactly(
-            IllegalArgumentException::class.java
+            InvalidArgumentException::class.java
         ) {
             ValidationUtil.isValidPayload(request)
         }
@@ -59,7 +60,7 @@ class ValidationUtilTest {
             .build();
 
         Assertions.assertThrowsExactly(
-            IllegalArgumentException::class.java
+            InvalidArgumentException::class.java
         ) {
             ValidationUtil.isValidPayload(request)
         }
@@ -67,10 +68,10 @@ class ValidationUtilTest {
 
     @Test
     fun `when validatePayload method is called with a null payload, should throw exception`() {
-        val request = null
+        val request : CreateProductServiceRequest? = null
 
         Assertions.assertThrowsExactly(
-            IllegalArgumentException::class.java
+            InvalidArgumentException::class.java
         ) {
             ValidationUtil.isValidPayload(request)
         }
