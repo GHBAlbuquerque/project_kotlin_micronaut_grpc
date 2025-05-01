@@ -1,7 +1,7 @@
 package br.com.study.utils
 
 import br.com.study.domain.Product
-import br.com.study.dto.ProductReq
+import br.com.study.dto.CreateProductReq
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
@@ -30,7 +30,7 @@ class ProductConverterUtilTest {
 
     @Test
     fun `when toDomain method is called, should return a Product without id`() {
-        val request = ProductReq(name= "Guaraná", price = 9.99, quantityInStock = 5)
+        val request = CreateProductReq(name= "Guaraná", price = 9.99, quantityInStock = 5)
         val product = request.toDomain()
 
         Assertions.assertEquals(null, product.id)

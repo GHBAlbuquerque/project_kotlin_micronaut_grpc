@@ -1,7 +1,6 @@
 package br.com.study.service.impl
 
 import br.com.study.domain.Product
-import br.com.study.dto.ProductReq
 import br.com.study.exceptions.AlreadyExistsException
 import br.com.study.exceptions.ProductNotFoundException
 import br.com.study.repositories.ProductRepository

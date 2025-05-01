@@ -1,7 +1,7 @@
 package br.com.study.utils
 
 import br.com.study.domain.Product
-import br.com.study.dto.ProductReq
+import br.com.study.dto.CreateProductReq
 import br.com.study.dto.ProductRes
 
 fun Product.toResponse(): ProductRes {
@@ -13,15 +13,15 @@ fun Product.toResponse(): ProductRes {
     )
 }
 
-fun Product.toRequest(): ProductReq {
-    return ProductReq(
+fun Product.toRequest(): CreateProductReq {
+    return CreateProductReq(
         name = name,
         price = price,
         quantityInStock = quantityInStock
     )
 }
 
-fun ProductReq.toDomain(): Product {
+fun CreateProductReq.toDomain(): Product {
     return Product(
         id = null,
         name = name,
