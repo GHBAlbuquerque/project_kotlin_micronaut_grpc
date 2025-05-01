@@ -27,6 +27,7 @@ jpa:
         show_sql: true
 
 flyway:
+  cleanDisabled: false
   datasources:
     default:
       enabled: true

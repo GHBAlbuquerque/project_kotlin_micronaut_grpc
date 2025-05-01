@@ -13,6 +13,7 @@ package br.com.study;
 service ProductsService {
   rpc Create (CreateProductServiceRequest) returns (ProductServiceResponse) {} // there can be many sends/metodos inside a service
   rpc FindById (FindProductByIdServiceRequest) returns (ProductServiceResponse) {}
+  rpc Update (UpdateProductServiceRequest) returns (ProductServiceResponse) {}
 }
 
 enum STATUS {
@@ -38,4 +39,11 @@ message ProductServiceResponse {
   string name = 2;
   double price = 3;
   int32 quantity_in_stock = 4;
+}
+
+message UpdateProductServiceRequest {
+  int64 id = 1;
+  optional string name = 2;
+  optional double price = 3;
+  optional int32 quantity_in_stock = 4;
 }

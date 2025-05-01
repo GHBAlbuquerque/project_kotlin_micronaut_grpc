@@ -45,6 +45,7 @@ Examples: ```Web APIs, social media platforms.```
 
 * Create Product
 * Find Product by ID
+* Update Product
 
 ## Running locally :computer: 
 
