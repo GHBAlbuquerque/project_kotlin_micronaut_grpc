@@ -1,10 +1,8 @@
 package br.com.study.resources
 
-import br.com.study.CreateProductServiceRequest
-import br.com.study.FindProductByIdServiceRequest
-import br.com.study.ProductServiceResponse
-import br.com.study.ProductsServiceGrpc
+import br.com.study.*
 import br.com.study.dto.CreateProductReq
+import br.com.study.dto.UpdateProductReq
 import br.com.study.exceptions.BaseBusinessException
 import br.com.study.services.ProductService
 import br.com.study.utils.ValidationUtil
@@ -17,7 +15,7 @@ class ProductResource(private val productService: ProductService) : ProductsServ
 
     override fun create(request: CreateProductServiceRequest?, responseObserver: StreamObserver<ProductServiceResponse>?) {
         try {
-            val payload = ValidationUtil.isValidPayload(request);
+            val payload = ValidationUtil.isValidPayload(request)
             val createProductReq =
                 CreateProductReq(name = payload.name, price = payload.price, quantityInStock = payload.quantityInStock)
 
@@ -57,6 +55,39 @@ class ProductResource(private val productService: ProductService) : ProductsServ
             responseObserver?.onNext(response)
             responseObserver?.onCompleted()
 
+        } catch (ex: BaseBusinessException) {
+            responseObserver?.onError(
+                ex.statusCode().toStatus()
+                    .withDescription(ex.errorMessage())
+                    .asRuntimeException()
+            )
+        }
+    }
+
+    override fun update(
+        request: UpdateProductServiceRequest?,
+        responseObserver: StreamObserver<ProductServiceResponse>?
+    ) {
+        try {
+            val payload = ValidationUtil.isValidPayload(request);
+            val updateProductReq =
+                UpdateProductReq(
+                    id = payload.id,
+                    name = payload.name,
+                    price = payload.price,
+                    quantityInStock = payload.quantityInStock
+                )
+
+            val productRes = productService.update(updateProductReq)
+            val response = ProductServiceResponse.newBuilder()
+                .setId(productRes.id)
+                .setName(productRes.name)
+                .setPrice(productRes.price)
+                .setQuantityInStock(productRes.quantityInStock)
+                .build()
+
+            responseObserver?.onNext(response)
+            responseObserver?.onCompleted()
         } catch (ex: BaseBusinessException) {
             responseObserver?.onError(
                 ex.statusCode().toStatus()

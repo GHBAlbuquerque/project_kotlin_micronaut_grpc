@@ -1,6 +1,8 @@
 package br.com.study.utils
 
 import br.com.study.CreateProductServiceRequest
+import br.com.study.UpdateProductServiceRequest
+import br.com.study.dto.UpdateProductReq
 
 class ValidationUtil {
     companion object { // Companion object to allow static-like access
@@ -24,6 +26,20 @@ class ValidationUtil {
             throw IllegalArgumentException("Payload cannot be null")
         }
 
+        fun isValidPayload(payload: UpdateProductServiceRequest?): UpdateProductServiceRequest {
 
+            payload?.let {
+                if (it.price.isNaN() || it.price < 0) {
+                    throw IllegalArgumentException("Price must be greater than 0")
+                }
+                if (it.quantityInStock < 0) {
+                    throw IllegalArgumentException("Quantity in stock cannot be less than 0")
+                }
+
+                return it;
+            }
+
+            throw IllegalArgumentException("Payload cannot be null")
+        }
     }
 }
