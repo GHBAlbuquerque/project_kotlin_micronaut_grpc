@@ -3,10 +3,12 @@ package br.com.study.resources
 import br.com.study.CreateProductServiceRequest
 import br.com.study.FindProductByIdServiceRequest
 import br.com.study.ProductsServiceGrpc.ProductsServiceBlockingStub
+import br.com.study.UpdateProductServiceRequest
 import io.grpc.Status
 import io.grpc.StatusRuntimeException
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
 
 @MicronautTest
@@ -15,9 +17,10 @@ internal class ProductResourcesTestIT(
 ) {
 
     @Test
-    fun `when ProductsServiceGrpc create method is called with valid data a success message is returned`() {
+    @Order(1)
+    fun `when ProductsServiceGrpc create method is called with valid data, a success message is returned`() {
         val request = CreateProductServiceRequest.newBuilder()
-            .setName("Guaraná")
+            .setName("Tubaína")
             .setPrice(9.99)
             .setQuantityInStock(5)
             .build();
@@ -25,11 +28,12 @@ internal class ProductResourcesTestIT(
         val response = productsServiceBlockingStub.create(request)
 
         Assertions.assertEquals(6, response.id)
-        Assertions.assertEquals("Guaraná", response.name)
+        Assertions.assertEquals("Tubaína", response.name)
     }
 
     @Test
-    fun `when ProductsServiceGrpc create method is called with invalid data an error message is returned`() {
+    @Order(2)
+    fun `when ProductsServiceGrpc create method is called with invalid data, an error message is returned`() {
         val request = CreateProductServiceRequest.newBuilder()
             .setName("")
             .setPrice(9.99)
@@ -44,9 +48,10 @@ internal class ProductResourcesTestIT(
     }
 
     @Test
-    fun `when ProductsServiceGrpc create method is called with duplicate name an error message is returned`() {
+    @Order(3)
+    fun `when ProductsServiceGrpc create method is called with duplicate name, an error message is returned`() {
         val request = CreateProductServiceRequest.newBuilder()
-            .setName("Product A")
+            .setName("Product B")
             .setPrice(9.99)
             .setQuantityInStock(5)
             .build();
@@ -61,7 +66,8 @@ internal class ProductResourcesTestIT(
     }
 
     @Test
-    fun `when ProductsServiceGrpc findById method is called with valid id a success message is returned`() {
+    @Order(4)
+    fun `when ProductsServiceGrpc findById method is called with valid id, a success message is returned`() {
         val request = FindProductByIdServiceRequest.newBuilder().setId(1L).build();
 
         val response = productsServiceBlockingStub.findById(request)
@@ -71,13 +77,85 @@ internal class ProductResourcesTestIT(
     }
 
     @Test
-    fun `when ProductsServiceGrpc findById method is called with invalid id an error message is returned`() {
+    @Order(5)
+    fun `when ProductsServiceGrpc findById method is called with invalid id, an error message is returned`() {
         val request = FindProductByIdServiceRequest.newBuilder().setId(100L).build();
 
         val response = Assertions.assertThrows(
             StatusRuntimeException::class.java
         ) {
             productsServiceBlockingStub.findById(request)
+        }
+
+        Assertions.assertEquals(Status.NOT_FOUND.code, response.status.code)
+    }
+
+    @Test
+    @Order(6)
+    fun `when ProductsServiceGrpc update method is called with valid data, a success message is returned`() {
+        val request = UpdateProductServiceRequest.newBuilder()
+            .setId(5L)
+            .setName("Guaraná")
+            .setPrice(9.99)
+            .setQuantityInStock(5)
+            .build();
+
+        val response = productsServiceBlockingStub.update(request)
+
+        Assertions.assertEquals(5L, response.id)
+        Assertions.assertEquals("Guaraná", response.name)
+    }
+
+    @Test
+    @Order(7)
+    fun `when ProductsServiceGrpc update method is called with invalid data, an error message is returned`() {
+        val request = UpdateProductServiceRequest.newBuilder()
+            .setId(1L)
+            .setName("")
+            .setPrice(-1.00)
+            .setQuantityInStock(5)
+            .build();
+
+        val response = Assertions.assertThrows(
+            StatusRuntimeException::class.java
+        ) {
+            productsServiceBlockingStub.update(request)
+        }
+    }
+
+    @Test
+    @Order(8)
+    fun `when ProductsServiceGrpc update method is called with duplicate name, an error message is returned`() {
+        val request = UpdateProductServiceRequest.newBuilder()
+            .setId(6L)
+            .setName("Product A")
+            .setPrice(9.99)
+            .setQuantityInStock(5)
+            .build();
+
+        val response = Assertions.assertThrows(
+            StatusRuntimeException::class.java
+        ) {
+            productsServiceBlockingStub.update(request)
+        }
+
+        Assertions.assertEquals(Status.ALREADY_EXISTS.code, response.status.code)
+    }
+
+    @Test
+    @Order(9)
+    fun `when ProductsServiceGrpc update method is called with non-existant product, an error message is returned`() {
+        val request = UpdateProductServiceRequest.newBuilder()
+            .setId(16L)
+            .setName("Sprite")
+            .setPrice(9.99)
+            .setQuantityInStock(5)
+            .build();
+
+        val response = Assertions.assertThrows(
+            StatusRuntimeException::class.java
+        ) {
+            productsServiceBlockingStub.update(request)
         }
 
         Assertions.assertEquals(Status.NOT_FOUND.code, response.status.code)
