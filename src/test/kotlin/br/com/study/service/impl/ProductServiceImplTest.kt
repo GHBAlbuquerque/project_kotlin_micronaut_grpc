@@ -119,4 +119,31 @@ internal class ProductServiceImplTest {
             productService.update(productUpdateInput.toUpdateRequest())
         }
     }
+
+    @Test
+    fun `when delete method is called with valid ID, should delete a product`() {
+        val productId = 1L
+        val product = Product(id = productId, name = "Product 1", price = 10.0, quantityInStock = 2)
+
+        `when`(productRepository.findById(productId))
+            .thenReturn(Optional.of(product))
+
+        productService.delete(productId)
+
+        Mockito.verify(productRepository).deleteById(productId)
+    }
+
+    @Test
+    fun `when delete method is called with non-existant product, should throw ProductNotFoundException`() {
+        val productId = 1L
+
+        `when`(productRepository.findById(productId))
+            .thenReturn(Optional.empty())
+
+        Assertions.assertThrowsExactly(
+            ProductNotFoundException::class.java
+        ) {
+            productService.delete(productId)
+        }
+    }
 }
