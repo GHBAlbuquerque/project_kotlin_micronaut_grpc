@@ -57,7 +57,12 @@ Examples: ```Web APIs, social media platforms.```
    ```bash
    ./gradlew build
    ```
-4. Run the application with the Application.kt class
+4. Generate proto classes:
+   ```bash
+   ./gradlew generateProto
+   ```
+5. Run the application with the Application.kt class
+6. Configure your Insomnia for gRPC requests as shown below.
    
 
 ### Making requests

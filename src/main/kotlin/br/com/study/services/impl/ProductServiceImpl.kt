@@ -43,6 +43,11 @@ class ProductServiceImpl(private val productRepository: ProductRepository) : Pro
         return copy.toResponse()
     }
 
+    override fun delete(id: Long) {
+        findById(id) // throws exception if not found
+        productRepository.deleteById(id)
+    }
+
     private fun verifyName(name: String) {
         productRepository.findByNameIgnoreCase(name)?.let {// only enters if a product with this name exists
             throw AlreadyExistsException(name);

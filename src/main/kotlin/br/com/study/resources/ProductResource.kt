@@ -13,7 +13,10 @@ import io.micronaut.grpc.annotation.GrpcService
 class ProductResource(private val productService: ProductService) : ProductsServiceGrpc.ProductsServiceImplBase() {
     // works like a controller in a REST API
 
-    override fun create(request: CreateProductServiceRequest?, responseObserver: StreamObserver<ProductServiceResponse>?) {
+    override fun create(
+        request: CreateProductServiceRequest?,
+        responseObserver: StreamObserver<ProductServiceResponse>?
+    ) {
         try {
             val payload = ValidationUtil.isValidPayload(request)
             val createProductReq =
@@ -40,11 +43,11 @@ class ProductResource(private val productService: ProductService) : ProductsServ
     }
 
     override fun findById(
-        request: FindProductByIdServiceRequest?,
+        request: RequestByIdServiceRequest,
         responseObserver: StreamObserver<ProductServiceResponse>?
     ) {
         try {
-            val productRes = productService.findById(request!!.id)
+            val productRes = productService.findById(request.id)
             val response = ProductServiceResponse.newBuilder()
                 .setId(productRes.id)
                 .setName(productRes.name)
@@ -94,6 +97,26 @@ class ProductResource(private val productService: ProductService) : ProductsServ
                     .withDescription(ex.errorMessage())
                     .asRuntimeException()
             )
+        }
+    }
+
+    override fun delete(
+        request: RequestByIdServiceRequest,
+        responseObserver: StreamObserver<Empty>?
+    ) {
+        try {
+            productService.delete(request.id)
+            val response = Empty.newBuilder().build()
+
+            responseObserver?.onNext(response)
+            responseObserver?.onCompleted()
+        } catch (ex: BaseBusinessException) {
+            responseObserver?.onError(
+                ex.statusCode().toStatus()
+                    .withDescription(ex.errorMessage())
+                    .asRuntimeException()
+            )
+
         }
     }
 }

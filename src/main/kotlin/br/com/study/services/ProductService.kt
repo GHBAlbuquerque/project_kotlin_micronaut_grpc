@@ -8,4 +8,5 @@ interface ProductService {
     fun create(req: CreateProductReq): ProductRes
     fun findById(id: Long): ProductRes
     fun update(req: UpdateProductReq): ProductRes
+    fun delete(id: Long)
 }
