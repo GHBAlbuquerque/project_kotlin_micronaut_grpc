@@ -130,6 +130,10 @@ internal class ProductServiceImplTest {
 
         productService.delete(productId)
 
+        Assertions.assertDoesNotThrow {
+            productRepository.findById(productId)
+        }
+
         Mockito.verify(productRepository).deleteById(productId)
     }
 
@@ -145,5 +149,30 @@ internal class ProductServiceImplTest {
         ) {
             productService.delete(productId)
         }
+    }
+
+    @Test
+    fun `when findAll method is called, should return a list of ProductRes`() {
+        val product = Product(id = 1L, name = "Product 1", price = 10.0, quantityInStock = 2)
+        val product2 = Product(id = 2L, name = "Product 2", price = 20.0, quantityInStock = 5)
+
+        `when`(productRepository.findAll())
+            .thenReturn(listOf(product, product2))
+
+        val response = productService.findAll()
+
+        Assertions.assertNotNull(response)
+        Assertions.assertEquals(2, response.size)
+    }
+
+    @Test
+    fun `when findAll method is called and no product exists, should return empty list`() {
+        `when`(productRepository.findAll())
+            .thenReturn(listOf())
+
+        val response = productService.findAll()
+
+        Assertions.assertNotNull(response)
+        Assertions.assertEquals(0, response.size)
     }
 }
