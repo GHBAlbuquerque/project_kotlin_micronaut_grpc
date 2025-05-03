@@ -40,7 +40,7 @@ class ProductResource(private val productService: ProductService) : ProductsServ
     }
 
     override fun findById(
-        request: FindProductByIdServiceRequest?,
+        request: RequestByIdServiceRequest?,
         responseObserver: StreamObserver<ProductServiceResponse>?
     ) {
         try {

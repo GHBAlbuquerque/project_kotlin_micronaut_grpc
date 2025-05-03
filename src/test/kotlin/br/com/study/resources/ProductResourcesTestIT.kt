@@ -1,8 +1,8 @@
 package br.com.study.resources
 
 import br.com.study.CreateProductServiceRequest
-import br.com.study.FindProductByIdServiceRequest
 import br.com.study.ProductsServiceGrpc.ProductsServiceBlockingStub
+import br.com.study.RequestByIdServiceRequest
 import br.com.study.UpdateProductServiceRequest
 import io.grpc.Status
 import io.grpc.StatusRuntimeException
@@ -80,7 +80,7 @@ internal class ProductResourcesTestIT(
     @Test
     @Order(4)
     fun `when ProductsServiceGrpc findById method is called with valid id, a success message is returned`() {
-        val request = FindProductByIdServiceRequest.newBuilder().setId(1L).build();
+        val request = RequestByIdServiceRequest.newBuilder().setId(1L).build();
 
         val response = productsServiceBlockingStub.findById(request)
 
@@ -91,7 +91,7 @@ internal class ProductResourcesTestIT(
     @Test
     @Order(5)
     fun `when ProductsServiceGrpc findById method is called with invalid id, an error message is returned`() {
-        val request = FindProductByIdServiceRequest.newBuilder().setId(100L).build();
+        val request = RequestByIdServiceRequest.newBuilder().setId(100L).build();
 
         val response = Assertions.assertThrows(
             StatusRuntimeException::class.java
