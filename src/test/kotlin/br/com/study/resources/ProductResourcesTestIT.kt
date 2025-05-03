@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestMethodOrder
 import org.junit.jupiter.api.MethodOrderer
+import org.mockito.Mockito
 
 @MicronautTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
@@ -168,6 +169,30 @@ internal class ProductResourcesTestIT(
             StatusRuntimeException::class.java
         ) {
             productsServiceBlockingStub.update(request)
+        }
+
+        Assertions.assertEquals(Status.NOT_FOUND.code, response.status.code)
+    }
+
+    @Test
+    @Order(10)
+    fun `when ProductsServiceGrpc delete method is called with valid id, a success message is returned`() {
+        val request = RequestByIdServiceRequest.newBuilder().setId(1L).build();
+
+        Assertions.assertDoesNotThrow {
+            productsServiceBlockingStub.delete(request)
+        }
+    }
+
+    @Test
+    @Order(11)
+    fun `when ProductsServiceGrpc delete method is called with invalid id, an error message is returned`() {
+        val request = RequestByIdServiceRequest.newBuilder().setId(100L).build();
+
+        val response = Assertions.assertThrows(
+            StatusRuntimeException::class.java
+        ) {
+            productsServiceBlockingStub.delete(request)
         }
 
         Assertions.assertEquals(Status.NOT_FOUND.code, response.status.code)
