@@ -63,8 +63,11 @@ Examples: ```Web APIs, social media platforms.```
    ```bash
    ./gradlew generateProto
    ```
-5. Run the application with the Application.kt class
-6. Configure your Insomnia for gRPC requests as shown below.
+5. Set environment variables for database connection:
+```POSTGRES_USER=admin;POSTGRES_PASSWORD=password;POSTGRES_DB=product_service```
+6. Navigate to /infra folder and run de ``docker-compose up`` command on the terminal to run a postgres container
+7. Run the application with the Application.kt class
+8. Configure your Insomnia for gRPC requests as shown below.
    
 
 ### Making requests
