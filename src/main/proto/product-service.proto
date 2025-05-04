@@ -15,12 +15,16 @@ service ProductsService {
   rpc FindById (RequestByIdServiceRequest) returns (ProductServiceResponse) {}
   rpc Update (UpdateProductServiceRequest) returns (ProductServiceResponse) {}
   rpc Delete (RequestByIdServiceRequest) returns (Empty) {}
+  rpc FindAll (Empty) returns (ProductsList) {}
 }
 
 enum STATUS {
   OK = 0;
   PARTIAL = 1;
   ERROR = 10;
+}
+
+message Empty {
 }
 
 message RequestByIdServiceRequest {
@@ -49,5 +53,6 @@ message UpdateProductServiceRequest {
   optional int32 quantity_in_stock = 4;
 }
 
-message Empty {
+message ProductsList {
+  repeated ProductServiceResponse products = 1;
 }

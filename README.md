@@ -47,6 +47,7 @@ Examples: ```Web APIs, social media platforms.```
 * Find Product by ID
 * Update Product
 * Delete Product by ID
+* Find all Products
 
 ## Running locally :computer: 
 

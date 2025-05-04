@@ -1,6 +1,7 @@
 package br.com.study.resources
 
 import br.com.study.CreateProductServiceRequest
+import br.com.study.Empty
 import br.com.study.ProductsServiceGrpc.ProductsServiceBlockingStub
 import br.com.study.RequestByIdServiceRequest
 import br.com.study.UpdateProductServiceRequest
@@ -197,4 +198,18 @@ internal class ProductResourcesTestIT(
 
         Assertions.assertEquals(Status.NOT_FOUND.code, response.status.code)
     }
+
+    @Test
+    @Order(12)
+    fun `when ProductsServiceGrpc findAll method is called, a success message is returned`() {
+        val request = Empty.newBuilder().build();
+
+        val response = productsServiceBlockingStub.findAll(request)
+
+        Assertions.assertTrue(response.productsList.isNotEmpty())
+    }
+
+
+
+
 }
