@@ -29,10 +29,12 @@ dependencies {
     implementation("javax.annotation:javax.annotation-api")
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
+    implementation("org.postgresql:postgresql")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
-    runtimeOnly("com.h2database:h2")
     runtimeOnly("org.yaml:snakeyaml")
+
+    testImplementation("com.h2database:h2")
     testImplementation("org.mockito:mockito-core")
     testImplementation("io.micronaut.flyway:micronaut-flyway")
 
